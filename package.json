@@ -1,0 +1,51 @@
+{
+  "name": "pumpx-backend",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "description": "Backend API for PumpX - Solana Token Creation and Trading Platform",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"No build step required\"",
+    "lint": "echo \"No linting configured\"",
+    "docker:build": "docker build -t pumpx-backend .",
+    "docker:run": "docker run -p 3001:3001 --env-file .env pumpx-backend"
+  },
+  "keywords": [
+    "solana",
+    "defi",
+    "token",
+    "trading",
+    "blockchain",
+    "cryptocurrency",
+    "api",
+    "backend"
+  ],
+  "author": "PumpX Team",
+  "license": "MIT",
+  "dependencies": {
+    "@solana/spl-token": "^0.4.14",
+    "@solana/web3.js": "^1.98.4",
+    "axios": "^1.12.2",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "ioredis": "^5.8.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.1",
+    "openai": "^5.23.1",
+    "pg": "^8.16.3",
+    "redis": "^5.8.2",
+    "uuid": "^13.0.0",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
