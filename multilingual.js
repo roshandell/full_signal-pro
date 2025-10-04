@@ -3,7 +3,7 @@
 
 class MultilingualSystem {
     constructor() {
-        this.currentLanguage = 'fa';
+        this.currentLanguage = localStorage.getItem('language') || 'fa';
         this.supportedLanguages = ['fa', 'en'];
         this.translations = {};
         this.rtlLanguages = ['fa', 'ar', 'he'];
@@ -29,6 +29,15 @@ class MultilingualSystem {
                 // Hero Section
                 'hero-subtitle': 'پلتفرم هوشمند ساخت و مدیریت توکن سولانا با قدرت هوش مصنوعی',
                 'platform-description': 'PumpX اولین پلتفرم کاملاً هوشمند برای ساخت، مدیریت و معاملات توکن‌های سولانا است که با استفاده از هوش مصنوعی پیشرفته، تجربه‌ای بی‌نظیر از دنیای DeFi ارائه می‌دهد.',
+                'viral-badge': '🔥 #1 پلتفرم وایرال توکن‌سازی با AI 🔥',
+                'hero-main-subtitle': '🚀 پلتفرم انقلابی ساخت و مدیریت توکن سولانا با قدرت هوش مصنوعی<br>💎 معاملات زنده، درآمدزایی خودکار، و ویژگی‌های وایرال',
+
+                // AI Status Indicator
+                'ai-active': 'AI فعال',
+                'ai-market-analysis': '🧠 تحلیل بازار: ',
+                'ai-optimization': '🎯 بهینه‌سازی: ',
+                'ai-prediction': '📈 پیش‌بینی: ',
+                'status-active': 'فعال',
 
                 // Token Information
                 'token-name': 'نام توکن',
@@ -44,176 +53,69 @@ class MultilingualSystem {
                 'ai-powered': 'هوش مصنوعی',
                 'smart-management': 'مدیریت هوشمند',
 
-                // Contract Information
-                'contract-info': 'اطلاعات قرارداد PXP',
-                'contract-address': 'آدرس قرارداد',
-                'decimals': 'اعشار',
-                'high-precision': 'دقت بالا در معاملات',
-                'status': 'وضعیت',
-                'active': 'فعال',
-                'ready-trading': 'آماده برای معاملات',
+                // Live Trading Section
+                'live-trading-title': '📊 معاملات زنده',
+                'live-trading-subtitle': 'قیمت‌های لحظه‌ای ارزهای دیجیتال',
+                'start-trading': '🚀 شروع معاملات',
 
-                // Wallet Information
-                'wallet-info': 'اطلاعات کیف پول',
-                'sol-balance': 'موجودی SOL:',
-                'pxp-balance': 'موجودی PXP:',
-                'wallet-address': 'آدرس کیف پول:',
-                'wallet-connected': 'کیف پول متصل شد',
-                'wallet-disconnected': 'کیف پول قطع شد',
+                // AI Features Section
+                'ai-features-title': '🤖 قدرت هوش مصنوعی',
+                'ai-features-subtitle': 'تکنولوژی پیشرفته AI برای بهینه‌سازی و وایرال شدن',
+                'ai-smart-analysis-title': 'تحلیل هوشمند بازار',
+                'ai-smart-analysis-desc': 'تحلیل لحظه‌ای بازار، شناسایی ترندها، و پیش‌بینی قیمت با دقت بالا',
+                'ai-auto-optimization-title': 'بهینه‌سازی خودکار',
+                'ai-auto-optimization-desc': 'بهینه‌سازی خودکار پورتفولیو، مدیریت ریسک، و پیشنهادات سرمایه‌گذاری',
+                'ai-viral-marketing-title': 'وایرال مارکتینگ',
+                'ai-viral-marketing-desc': 'تولید محتوای وایرال، بهینه‌سازی شبکه‌های اجتماعی، و افزایش محبوبیت',
+                'ai-smart-suggestions-title': 'پیشنهادات هوشمند',
+                'ai-smart-suggestions-desc': 'پیشنهاد نام و نماد توکن، تحلیل رفتار کاربران، و بهینه‌سازی تجربه',
+                'ai-advanced-security-title': 'امنیت پیشرفته',
+                'ai-advanced-security-desc': 'تشخیص ریسک تراکنش‌ها، شناسایی تهدیدات، و محافظت از دارایی‌ها',
+                'ai-trend-prediction-title': 'پیش‌بینی روند',
+                'ai-trend-prediction-desc': 'پیش‌بینی روند بازار، تحلیل احساسات، و شناسایی فرصت‌های سرمایه‌گذاری',
 
-                // Token Creator
-                'ai-token-creator': 'ساخت توکن با هوش مصنوعی',
-                'token-name-label': 'نام توکن:',
-                'token-name-placeholder': 'مثال: MyAwesomeToken',
-                'token-symbol-label': 'نماد توکن:',
-                'token-symbol-placeholder': 'مثال: MAT',
-                'token-supply-label': 'کل عرضه:',
-                'token-supply-placeholder': '1000000',
-                'token-description-label': 'توضیحات:',
-                'token-description-placeholder': 'توضیح کوتاهی از توکن شما...',
-                'icon-upload-label': 'آپلود آیکون توکن:',
-                'drag-drop-icon': 'کلیک کنید یا فایل را بکشید',
-                'supported-formats': 'فرمت‌های پشتیبانی شده: PNG, JPG, SVG',
+                // Profit System Section
+                'profit-system-title': '💰 سیستم درآمدزایی',
+                'profit-system-subtitle': 'درآمد خودکار از ساخت توکن‌ها و معاملات کاربران',
+                'step1-title': '1. ساخت توکن',
+                'step1-desc': 'کاربران توکن می‌سازند',
+                'step2-title': '2. دریافت کارمزد',
+                'step2-desc': 'کارمزد به پلتفرم واریز می‌شود',
+                'step3-title': '3. تبدیل خودکار',
+                'step3-desc': 'توکن‌ها در صرافی تبدیل می‌شوند',
+                'step4-title': '4. واریز سود',
+                'step4-desc': 'سود به کیف پول Phantom واریز می‌شود',
+                'profit-stats-title': '💎 آمار درآمدزایی',
+                'profit-today': 'درآمد امروز',
+                'tokens-created-stats': 'توکن ساخته شده',
+                'success-rate': 'نرخ موفقیت',
+                'active-users-stats': 'کاربران فعال',
 
-                // AI Features
-                'ai-suggestions': 'پیشنهادات هوش مصنوعی',
-                'generating-suggestions': 'در حال تولید پیشنهادات...',
-                'ai-optimization': 'بهینه‌سازی با AI',
-                'ai-analysis': 'تحلیل هوشمند',
-                'ai-security-check': 'بررسی امنیت با AI',
+                // Social Proof
+                'social-proof-title': '🌟 اعتماد میلیون‌ها کاربر',
+                'social-proof-subtitle': 'بیش از 25 هزار کاربر فعال و 1200 توکن موفق ساخته شده',
+                'active-users-label': 'کاربران فعال',
+                'tokens-created-label': 'توکن ساخته شده',
+                'total-volume-label': 'حجم کل معاملات',
+                'ai-accuracy-label': 'دقت پیش‌بینی AI',
 
-                // Fees and Costs
-                'creation-fees': 'هزینه‌های ساخت',
-                'solana-fee': 'هزینه شبکه سولانا:',
-                'platform-fee': 'کارمزد پلتفرم:',
-                'total-fee': 'مجموع:',
-                'fee-note': 'کارمزد به کیف پول پلتفرم واریز می‌شود',
-                'create-token': 'ساخت توکن روی سولانا',
-
-                // Features
-                'real-token-creation': 'ساخت توکن واقعی روی سولانا',
-                'solana-sdk': 'استفاده از Solana SDK',
-                'token-metadata': 'ساخت توکن با متادیتا',
-                'blockchain-storage': 'ذخیره در بلاک‌چین',
-                'wallet-display': 'نمایش توکن در کیف‌پول',
-                'live-trading': 'خرید، فروش و تبدیل توکن‌ها',
-                'dex-connection': 'اتصال به Jupiter DEX',
-                'real-time-conversion': 'تبدیل با نرخ لحظه‌ای',
-                'ai-trading-tips': 'پیشنهاد بهترین زمان معامله',
-                'volatility-alerts': 'هشدار نوسانات شدید',
-
-                // Portfolio Management
-                'ai-portfolio': 'مدیریت پورتفولیو با AI',
-                'auto-analysis': 'تحلیل خودکار پورتفولیو',
-                'optimization-suggestions': 'پیشنهادات بهینه‌سازی',
-                'risk-alerts': 'هشدارهای ریسک',
-                'analytical-reports': 'گزارش‌های تحلیلی',
-
-                // Market Analytics
-                'advanced-analytics': 'تحلیل‌های پیشرفته بازار',
-                'technical-charts': 'نمودارهای تکنیکال',
-                'market-indicators': 'شاخص‌های بازار',
-                'ai-price-prediction': 'پیش‌بینی قیمت با AI',
-                'sentiment-analysis': 'تحلیل احساسات بازار',
-
-                // Basic Features
-                'basic-features': 'ویژگی‌های پایه',
-                'live-prices': 'مشاهده قیمت‌های زنده',
-                'token-info': 'اطلاعات عمومی توکن‌ها',
-                'free-tutorials': 'آموزش‌های رایگان',
-                'support-24-7': 'پشتیبانی 24/7',
-
-                // Social Features
-                'social-features': 'ویژگی‌های اجتماعی',
-                'social-sharing': 'اشتراک‌گذاری در شبکه‌ها',
-                'official-channels': 'عضویت در کانال‌های رسمی',
-                'news-updates': 'دریافت اخبار و به‌روزرسانی',
-                'community-connection': 'ارتباط با جامعه',
-
-                // AI Everywhere
-                'ai-everywhere': 'هوش مصنوعی در همه بخش‌ها',
-                'ai-name-suggestion': 'پیشنهاد نام و نماد توکن',
-                'ai-behavior-analysis': 'تحلیل رفتار کاربران',
-                'ai-risk-detection': 'تشخیص ریسک تراکنش‌ها',
-                'ai-viral-content': 'تولید محتوا برای وایرال شدن',
-                'ai-learning': 'یادگیری از داده‌های کاربران',
-                'ai-market-prediction': 'پیش‌بینی روند بازار',
-
-                // Trading Center
-                'trading-center': 'مرکز معاملات PXP',
-                'current-price': 'قیمت فعلی PXP',
-                '24h-change': 'تغییرات 24 ساعته:',
-                'buy': 'خرید',
-                'sell': 'فروش',
-                'convert': 'تبدیل',
-                'swap': 'مبادله',
-
-                // Market Stats
-                'market-stats': 'آمار بازار',
-                '24h-volume': 'حجم معاملات 24h:',
-                'highest-price': 'بالاترین قیمت:',
-                'lowest-price': 'پایین‌ترین قیمت:',
-                'holders-count': 'تعداد نگهدارندگان:',
-                'view-explorer': 'مشاهده در Solana Explorer',
-
-                // Dashboard Stats
-                'active-users': 'کاربران فعال',
-                'tokens-created': 'توکن ساخته شده',
-                'total-volume': 'حجم کل معاملات',
-                'ai-accuracy': 'دقت پیش‌بینی AI',
-                'total-profits': 'کل سود',
-                'trading-volume': 'حجم معاملات',
-
-                // Live Dashboard
-                'live-dashboard': 'داشبورد زنده پلتفرم',
-                'pxp-token-metrics': 'معیارهای توکن PXP',
-                'current-price': 'قیمت فعلی:',
-                'market-cap': 'ارزش بازار:',
-                'circulating-supply': 'عرضه در گردش:',
-                'daily-volume': 'حجم روزانه:',
-                'profit-breakdown': 'تفکیک سود',
-                'token-creation-fees': 'کارمزد ساخت توکن',
-                'trading-commissions': 'کمیسیون معاملات',
-                'conversion-fees': 'کارمزد تبدیل',
-                'recent-transactions': 'تراکنش‌های اخیر',
-                'platform-wallet': 'کیف پول پلتفرم',
-                'address': 'آدرس:',
-                'balance': 'موجودی:',
-
-                // Community
-                'join-community': 'به جامعه PumpX بپیوندید',
-                'community-description': 'با هزاران کاربر دیگر در ارتباط باشید و از آخرین اخبار و به‌روزرسانی‌ها مطلع شوید',
-
-                // Footer
-                'all-rights-reserved': 'تمامی حقوق محفوظ است.',
-                'made-with-love': 'ساخته شده با ❤️ برای جامعه سولانا',
+                // CTA Section
+                'cta-title': '🚀 آماده برای شروع انقلاب؟',
+                'cta-subtitle': 'به بیش از 25 هزار کاربر بپیوندید و توکن خود را با هوش مصنوعی بسازید',
+                'cta-create-token': '💎 ساخت توکن با AI',
+                'cta-start-trading': '📊 شروع معاملات',
+                'cta-view-dashboard': '🎯 مشاهده داشبورد',
 
                 // Messages and Notifications
-                'wallet-connect-first': 'ابتدا کیف پول خود را متصل کنید',
-                'insufficient-sol': 'موجودی SOL کافی نیست',
-                'insufficient-pxp': 'موجودی PXP کافی نیست',
-                'fill-required-fields': 'لطفاً تمام فیلدهای ضروری را پر کنید',
-                'token-created-success': 'توکن با موفقیت ساخته شد!',
-                'trade-success': 'معامله با موفقیت انجام شد',
-                'address-copied': 'آدرس کپی شد!',
-                'welcome-message': 'به PumpX خوش آمدید! پلتفرم کامل ساخت و مدیریت توکن با هوش مصنوعی',
+                'wallet-connected-success': '✅ کیف پول با موفقیت متصل شد!',
+                'phantom-install-prompt': '❌ لطفاً کیف پول Phantom را نصب کنید',
+                'wallet-connect-error': '❌ خطا در اتصال کیف پول',
+                'trading-launching': '🚀 در حال راه‌اندازی پنل معاملات...',
+                'prices-updated': '🔄 قیمت‌ها به‌روزرسانی شد',
+                'welcome-message': '🎉 به PumpX خوش آمدید! پلتفرم هوشمند توکن‌سازی',
 
-                // Error Messages
-                'connection-error': 'خطا در اتصال',
-                'transaction-failed': 'تراکنش ناموفق',
-                'network-error': 'خطای شبکه',
-                'unknown-error': 'خطای نامشخص',
-
-                // Time and Date
-                'today': 'امروز',
-                'yesterday': 'دیروز',
-                'this-week': 'این هفته',
-                'this-month': 'این ماه',
-                'loading': 'در حال بارگذاری...',
-                'processing': 'در حال پردازش...',
-                'completed': 'تکمیل شد',
-                'pending': 'در انتظار',
-                'confirmed': 'تأیید شد'
+                // Footer
+                'footer-text': 'تمامی حقوق محفوظ است. ساخته شده با ❤️ برای جامعه سولانا'
             },
             en: {
                 // Navigation
@@ -229,6 +131,15 @@ class MultilingualSystem {
                 // Hero Section
                 'hero-subtitle': 'Smart Solana token creation and management platform powered by AI',
                 'platform-description': 'PumpX is the first fully intelligent platform for creating, managing and trading Solana tokens that provides an unparalleled DeFi experience using advanced artificial intelligence.',
+                'viral-badge': '🔥 #1 Viral AI Token Platform 🔥',
+                'hero-main-subtitle': '🚀 Revolutionary Solana token creation & management platform powered by AI<br>💎 Live trading, automated monetization, and viral features',
+
+                // AI Status Indicator
+                'ai-active': 'AI Active',
+                'ai-market-analysis': '🧠 Market Analysis: ',
+                'ai-optimization': '🎯 Optimization: ',
+                'ai-prediction': '📈 Prediction: ',
+                'status-active': 'Active',
 
                 // Token Information
                 'token-name': 'Token Name',
@@ -244,492 +155,221 @@ class MultilingualSystem {
                 'ai-powered': 'AI Powered',
                 'smart-management': 'Smart management',
 
-                // Contract Information
-                'contract-info': 'PXP Contract Information',
-                'contract-address': 'Contract Address',
-                'decimals': 'Decimals',
-                'high-precision': 'High precision trading',
-                'status': 'Status',
-                'active': 'Active',
-                'ready-trading': 'Ready for trading',
+                // Live Trading Section
+                'live-trading-title': '📊 Live Trading',
+                'live-trading-subtitle': 'Real-time cryptocurrency prices',
+                'start-trading': '🚀 Start Trading',
 
-                // Wallet Information
-                'wallet-info': 'Wallet Information',
-                'sol-balance': 'SOL Balance:',
-                'pxp-balance': 'PXP Balance:',
-                'wallet-address': 'Wallet Address:',
-                'wallet-connected': 'Wallet connected',
-                'wallet-disconnected': 'Wallet disconnected',
+                // AI Features Section
+                'ai-features-title': '🤖 Power of Artificial Intelligence',
+                'ai-features-subtitle': 'Advanced AI technology for optimization and virality',
+                'ai-smart-analysis-title': 'Smart Market Analysis',
+                'ai-smart-analysis-desc': 'Real-time market analysis, trend identification, and high-accuracy price prediction',
+                'ai-auto-optimization-title': 'Automated Optimization',
+                'ai-auto-optimization-desc': 'Automated portfolio optimization, risk management, and investment suggestions',
+                'ai-viral-marketing-title': 'Viral Marketing',
+                'ai-viral-marketing-desc': 'Viral content generation, social media optimization, and popularity growth',
+                'ai-smart-suggestions-title': 'Smart Suggestions',
+                'ai-smart-suggestions-desc': 'Token name and symbol suggestions, user behavior analysis, and experience optimization',
+                'ai-advanced-security-title': 'Advanced Security',
+                'ai-advanced-security-desc': 'Transaction risk detection, threat identification, and asset protection',
+                'ai-trend-prediction-title': 'Trend Prediction',
+                'ai-trend-prediction-desc': 'Market trend prediction, sentiment analysis, and investment opportunity identification',
 
-                // Token Creator
-                'ai-token-creator': 'AI Token Creator',
-                'token-name-label': 'Token Name:',
-                'token-name-placeholder': 'e.g., MyAwesomeToken',
-                'token-symbol-label': 'Token Symbol:',
-                'token-symbol-placeholder': 'e.g., MAT',
-                'token-supply-label': 'Total Supply:',
-                'token-supply-placeholder': '1000000',
-                'token-description-label': 'Description:',
-                'token-description-placeholder': 'Brief description of your token...',
-                'icon-upload-label': 'Upload Token Icon:',
-                'drag-drop-icon': 'Click or drag file here',
-                'supported-formats': 'Supported formats: PNG, JPG, SVG',
+                // Profit System Section
+                'profit-system-title': '💰 Monetization System',
+                'profit-system-subtitle': 'Automated income from token creation and user transactions',
+                'step1-title': '1. Token Creation',
+                'step1-desc': 'Users create tokens',
+                'step2-title': '2. Fee Collection',
+                'step2-desc': 'Fees are deposited to the platform',
+                'step3-title': '3. Automated Conversion',
+                'step3-desc': 'Tokens are converted on exchange',
+                'step4-title': '4. Profit Deposit',
+                'step4-desc': 'Profits are deposited to Phantom wallet',
+                'profit-stats-title': '💎 Monetization Statistics',
+                'profit-today': 'Today\'s Profit',
+                'tokens-created-stats': 'Tokens Created',
+                'success-rate': 'Success Rate',
+                'active-users-stats': 'Active Users',
 
-                // AI Features
-                'ai-suggestions': 'AI Suggestions',
-                'generating-suggestions': 'Generating suggestions...',
-                'ai-optimization': 'AI Optimization',
-                'ai-analysis': 'Smart Analysis',
-                'ai-security-check': 'AI Security Check',
+                // Social Proof
+                'social-proof-title': '🌟 Trusted by Millions',
+                'social-proof-subtitle': 'Over 25k active users and 1200 successful tokens created',
+                'active-users-label': 'Active Users',
+                'tokens-created-label': 'Tokens Created',
+                'total-volume-label': 'Total Trading Volume',
+                'ai-accuracy-label': 'AI Prediction Accuracy',
 
-                // Fees and Costs
-                'creation-fees': 'Creation Fees',
-                'solana-fee': 'Solana Network Fee:',
-                'platform-fee': 'Platform Fee:',
-                'total-fee': 'Total:',
-                'fee-note': 'Fees are sent to platform wallet',
-                'create-token': 'Create Token on Solana',
-
-                // Features
-                'real-token-creation': 'Real Token Creation on Solana',
-                'solana-sdk': 'Using Solana SDK',
-                'token-metadata': 'Token creation with metadata',
-                'blockchain-storage': 'Blockchain storage',
-                'wallet-display': 'Display token in wallet',
-                'live-trading': 'Buy, sell and convert tokens',
-                'dex-connection': 'Connect to Jupiter DEX',
-                'real-time-conversion': 'Real-time conversion',
-                'ai-trading-tips': 'AI trading suggestions',
-                'volatility-alerts': 'Volatility alerts',
-
-                // Portfolio Management
-                'ai-portfolio': 'AI Portfolio Management',
-                'auto-analysis': 'Automatic portfolio analysis',
-                'optimization-suggestions': 'Optimization suggestions',
-                'risk-alerts': 'Risk alerts',
-                'analytical-reports': 'Analytical reports',
-
-                // Market Analytics
-                'advanced-analytics': 'Advanced Market Analytics',
-                'technical-charts': 'Technical charts',
-                'market-indicators': 'Market indicators',
-                'ai-price-prediction': 'AI price prediction',
-                'sentiment-analysis': 'Market sentiment analysis',
-
-                // Basic Features
-                'basic-features': 'Basic Features',
-                'live-prices': 'Live price viewing',
-                'token-info': 'General token information',
-                'free-tutorials': 'Free tutorials',
-                'support-24-7': '24/7 Support',
-
-                // Social Features
-                'social-features': 'Social Features',
-                'social-sharing': 'Social media sharing',
-                'official-channels': 'Join official channels',
-                'news-updates': 'News and updates',
-                'community-connection': 'Community connection',
-
-                // AI Everywhere
-                'ai-everywhere': 'AI in All Sections',
-                'ai-name-suggestion': 'Token name and symbol suggestions',
-                'ai-behavior-analysis': 'User behavior analysis',
-                'ai-risk-detection': 'Transaction risk detection',
-                'ai-viral-content': 'Viral content generation',
-                'ai-learning': 'Learning from user data',
-                'ai-market-prediction': 'Market trend prediction',
-
-                // Trading Center
-                'trading-center': 'PXP Trading Center',
-                'current-price': 'Current PXP Price',
-                '24h-change': '24h Change:',
-                'buy': 'Buy',
-                'sell': 'Sell',
-                'convert': 'Convert',
-                'swap': 'Swap',
-
-                // Market Stats
-                'market-stats': 'Market Stats',
-                '24h-volume': '24h Volume:',
-                'highest-price': 'Highest Price:',
-                'lowest-price': 'Lowest Price:',
-                'holders-count': 'Holders Count:',
-                'view-explorer': 'View on Solana Explorer',
-
-                // Dashboard Stats
-                'active-users': 'Active Users',
-                'tokens-created': 'Tokens Created',
-                'total-volume': 'Total Volume',
-                'ai-accuracy': 'AI Prediction Accuracy',
-                'total-profits': 'Total Profits',
-                'trading-volume': 'Trading Volume',
-
-                // Live Dashboard
-                'live-dashboard': 'Live Platform Dashboard',
-                'pxp-token-metrics': 'PXP Token Metrics',
-                'current-price': 'Current Price:',
-                'market-cap': 'Market Cap:',
-                'circulating-supply': 'Circulating Supply:',
-                'daily-volume': 'Daily Volume:',
-                'profit-breakdown': 'Profit Breakdown',
-                'token-creation-fees': 'Token Creation Fees',
-                'trading-commissions': 'Trading Commissions',
-                'conversion-fees': 'Conversion Fees',
-                'recent-transactions': 'Recent Transactions',
-                'platform-wallet': 'Platform Wallet',
-                'address': 'Address:',
-                'balance': 'Balance:',
-
-                // Community
-                'join-community': 'Join PumpX Community',
-                'community-description': 'Connect with thousands of other users and stay updated with the latest news',
-
-                // Footer
-                'all-rights-reserved': 'All rights reserved.',
-                'made-with-love': 'Made with ❤️ for Solana community',
+                // CTA Section
+                'cta-title': '🚀 Ready to Start the Revolution?',
+                'cta-subtitle': 'Join over 25k users and create your token with AI',
+                'cta-create-token': '💎 Create Token with AI',
+                'cta-start-trading': '📊 Start Trading',
+                'cta-view-dashboard': '🎯 View Dashboard',
 
                 // Messages and Notifications
-                'wallet-connect-first': 'Please connect your wallet first',
-                'insufficient-sol': 'Insufficient SOL balance',
-                'insufficient-pxp': 'Insufficient PXP balance',
-                'fill-required-fields': 'Please fill all required fields',
-                'token-created-success': 'Token created successfully!',
-                'trade-success': 'Trade completed successfully',
-                'address-copied': 'Address copied!',
-                'welcome-message': 'Welcome to PumpX! Complete AI-powered token creation and management platform',
+                'wallet-connected-success': '✅ Wallet connected successfully!',
+                'phantom-install-prompt': '❌ Please install Phantom wallet',
+                'wallet-connect-error': '❌ Error connecting wallet',
+                'trading-launching': '🚀 Launching trading panel...',
+                'prices-updated': '🔄 Prices updated',
+                'welcome-message': '🎉 Welcome to PumpX! Smart Token Creation Platform',
 
-                // Error Messages
-                'connection-error': 'Connection error',
-                'transaction-failed': 'Transaction failed',
-                'network-error': 'Network error',
-                'unknown-error': 'Unknown error',
-
-                // Time and Date
-                'today': 'Today',
-                'yesterday': 'Yesterday',
-                'this-week': 'This week',
-                'this-month': 'This month',
-                'loading': 'Loading...',
-                'processing': 'Processing...',
-                'completed': 'Completed',
-                'pending': 'Pending',
-                'confirmed': 'Confirmed'
+                // Footer
+                'footer-text': 'All rights reserved. Made with ❤️ for the Solana community'
             }
         };
     }
 
-    // Initialize language system
     initializeLanguageSystem() {
-        // Detect browser language
-        const browserLang = navigator.language.split('-')[0];
-        const savedLang = localStorage.getItem('pumpx_language');
-        
-        // Set initial language
-        this.currentLanguage = savedLang || (this.supportedLanguages.includes(browserLang) ? browserLang : 'fa');
-        
-        // Apply initial language
-        this.applyLanguage(this.currentLanguage);
-        
-        console.log('Multilingual system initialized with language:', this.currentLanguage);
+        document.documentElement.setAttribute('lang', this.currentLanguage);
+        document.documentElement.setAttribute('dir', this.rtlLanguages.includes(this.currentLanguage) ? 'rtl' : 'ltr');
+        this.applyTranslations();
     }
 
-    // Switch language
-    switchLanguage(language) {
-        if (!this.supportedLanguages.includes(language)) {
-            console.warn('Unsupported language:', language);
-            return;
-        }
-
-        this.currentLanguage = language;
-        localStorage.setItem('pumpx_language', language);
-        
-        this.applyLanguage(language);
-        this.notifyCallbacks(language);
-    }
-
-    // Apply language to the page
-    applyLanguage(language) {
-        // Set document attributes
-        document.documentElement.lang = language;
-        document.documentElement.dir = this.rtlLanguages.includes(language) ? 'rtl' : 'ltr';
-        
-        // Update language buttons
-        this.updateLanguageButtons(language);
-        
-        // Update all translatable elements
-        this.updateTranslatableElements(language);
-        
-        // Update placeholder texts
-        this.updatePlaceholderTexts(language);
-        
-        // Update dynamic content
-        this.updateDynamicContent(language);
-        
-        // Apply RTL/LTR specific styles
-        this.applyDirectionalStyles(language);
-    }
-
-    // Update language buttons
-    updateLanguageButtons(language) {
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        
-        const activeBtn = document.querySelector(`[onclick="switchLanguage('${language}')"]`);
-        if (activeBtn) {
-            activeBtn.classList.add('active');
+    setLanguage(lang) {
+        if (this.supportedLanguages.includes(lang)) {
+            this.currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            this.initializeLanguageSystem();
+            this.callbacks.forEach(callback => callback(lang));
         }
     }
 
-    // Update translatable elements
-    updateTranslatableElements(language) {
-        document.querySelectorAll('[data-lang]').forEach(element => {
-            const key = element.getAttribute('data-lang');
-            const translation = this.getTranslation(key, language);
-            
-            if (translation) {
-                element.textContent = translation;
-            }
-        });
+    getTranslation(key) {
+        return this.translations[this.currentLanguage][key] || key;
     }
 
-    // Update placeholder texts
-    updatePlaceholderTexts(language) {
-        document.querySelectorAll('[data-lang-placeholder]').forEach(element => {
-            const key = element.getAttribute('data-lang-placeholder');
-            const translation = this.getTranslation(key, language);
-            
-            if (translation) {
-                element.placeholder = translation;
-            }
-        });
-    }
-
-    // Update dynamic content
-    updateDynamicContent(language) {
-        // Update title attributes
-        document.querySelectorAll('[data-lang-title]').forEach(element => {
-            const key = element.getAttribute('data-lang-title');
-            const translation = this.getTranslation(key, language);
-            
-            if (translation) {
-                element.title = translation;
-            }
+    applyTranslations() {
+        document.querySelectorAll('[data-translate]').forEach(element => {
+            const key = element.getAttribute('data-translate');
+            element.innerHTML = this.getTranslation(key);
         });
 
-        // Update aria-label attributes
-        document.querySelectorAll('[data-lang-aria]').forEach(element => {
-            const key = element.getAttribute('data-lang-aria');
-            const translation = this.getTranslation(key, language);
-            
-            if (translation) {
-                element.setAttribute('aria-label', translation);
-            }
-        });
+        // Update specific elements that might not use data-translate
+        document.title = this.getTranslation('PumpX - پلتفرم هوشمند ساخت و مدیریت توکن سولانا با AI'); // Update title
+        document.querySelector('meta[name="description"]').setAttribute('content', this.getTranslation('hero-main-subtitle'));
+        document.querySelector('meta[property="og:description"]').setAttribute('content', this.getTranslation('hero-main-subtitle'));
+        document.querySelector('meta[name="twitter:description"]').setAttribute('content', this.getTranslation('hero-main-subtitle'));
+
+        // Update navigation links
+        document.querySelector('.nav-menu a[href="#home"]').innerHTML = this.getTranslation('nav-home');
+        document.querySelector('.nav-menu a[href="#features"]').innerHTML = this.getTranslation('nav-features');
+        document.querySelector('.nav-menu a[href="#create-token"]').innerHTML = this.getTranslation('nav-creator');
+        document.querySelector('.nav-menu a[href="#trading"]').innerHTML = this.getTranslation('nav-trading');
+        document.querySelector('.nav-menu a[href="#ai"]').innerHTML = this.getTranslation('nav-ai');
+        document.querySelector('.nav-menu a[href="#social"]').innerHTML = this.getTranslation('nav-social');
+        document.querySelector('.nav-menu a[href="#dashboard"]').innerHTML = this.getTranslation('nav-dashboard');
+        document.querySelector('.wallet-connect').innerHTML = `<i class="fas fa-wallet"></i> ${this.getTranslation('connect-wallet')}`;
+
+        // Update hero section
+        document.querySelector('.viral-badge').innerHTML = this.getTranslation('viral-badge');
+        document.querySelector('.hero-subtitle').innerHTML = this.getTranslation('hero-main-subtitle');
+
+        // Update AI status indicator
+        document.querySelector('.ai-status span').innerHTML = this.getTranslation('ai-active');
+        document.querySelector('.ai-status div:nth-child(2) div:nth-child(1)').innerHTML = this.getTranslation('ai-market-analysis') + `<span style="color: #00ff88;">${this.getTranslation('status-active')}</span>`;
+        document.querySelector('.ai-status div:nth-child(2) div:nth-child(2)').innerHTML = this.getTranslation('ai-optimization') + `<span style="color: #00ff88;">${this.getTranslation('status-active')}</span>`;
+        document.querySelector('.ai-status div:nth-child(2) div:nth-child(3)').innerHTML = this.getTranslation('ai-prediction') + `<span style="color: #00ff88;">${this.getTranslation('status-active')}</span>`;
+
+        // Update token stats
+        document.querySelector('.token-stats div:nth-child(1) .stat-title').innerHTML = this.getTranslation('token-name');
+        document.querySelector('.token-stats div:nth-child(1) .stat-description').innerHTML = this.getTranslation('platform-token');
+        document.querySelector('.token-stats div:nth-child(2) .stat-title').innerHTML = this.getTranslation('total-supply');
+        document.querySelector('.token-stats div:nth-child(2) .stat-description').innerHTML = this.getTranslation('one-billion');
+        document.querySelector('.token-stats div:nth-child(3) .stat-title').innerHTML = this.getTranslation('network');
+        document.querySelector('.token-stats div:nth-child(3) .stat-description').innerHTML = this.getTranslation('fast-cheap');
+        document.querySelector('.token-stats div:nth-child(4) .stat-title').innerHTML = this.getTranslation('token-type');
+        document.querySelector('.token-stats div:nth-child(4) .stat-description').innerHTML = this.getTranslation('solana-standard');
+        document.querySelector('.token-stats div:nth-child(5) .stat-title').innerHTML = this.getTranslation('usage');
+        document.querySelector('.token-stats div:nth-child(5) .stat-description').innerHTML = this.getTranslation('fee-governance');
+        document.querySelector('.token-stats div:nth-child(6) .stat-title').innerHTML = this.getTranslation('ai-powered');
+        document.querySelector('.token-stats div:nth-child(6) .stat-description').innerHTML = this.getTranslation('smart-management');
+
+        // Update live trading section
+        document.querySelector('.trading-title').innerHTML = this.getTranslation('live-trading-title');
+        document.querySelector('.trading-section p').innerHTML = this.getTranslation('live-trading-subtitle');
+        document.querySelector('.trading-section .cta-button').innerHTML = this.getTranslation('start-trading');
+
+        // Update AI features section
+        document.querySelector('.ai-features .ai-title').innerHTML = this.getTranslation('ai-features-title');
+        document.querySelector('.ai-features p').innerHTML = this.getTranslation('ai-features-subtitle');
+        document.querySelector('.ai-grid div:nth-child(1) .ai-card-title').innerHTML = this.getTranslation('ai-smart-analysis-title');
+        document.querySelector('.ai-grid div:nth-child(1) .ai-card-description').innerHTML = this.getTranslation('ai-smart-analysis-desc');
+        document.querySelector('.ai-grid div:nth-child(2) .ai-card-title').innerHTML = this.getTranslation('ai-auto-optimization-title');
+        document.querySelector('.ai-grid div:nth-child(2) .ai-card-description').innerHTML = this.getTranslation('ai-auto-optimization-desc');
+        document.querySelector('.ai-grid div:nth-child(3) .ai-card-title').innerHTML = this.getTranslation('ai-viral-marketing-title');
+        document.querySelector('.ai-grid div:nth-child(3) .ai-card-description').innerHTML = this.getTranslation('ai-viral-marketing-desc');
+        document.querySelector('.ai-grid div:nth-child(4) .ai-card-title').innerHTML = this.getTranslation('ai-smart-suggestions-title');
+        document.querySelector('.ai-grid div:nth-child(4) .ai-card-description').innerHTML = this.getTranslation('ai-smart-suggestions-desc');
+        document.querySelector('.ai-grid div:nth-child(5) .ai-card-title').innerHTML = this.getTranslation('ai-advanced-security-title');
+        document.querySelector('.ai-grid div:nth-child(5) .ai-card-description').innerHTML = this.getTranslation('ai-advanced-security-desc');
+        document.querySelector('.ai-grid div:nth-child(6) .ai-card-title').innerHTML = this.getTranslation('ai-trend-prediction-title');
+        document.querySelector('.ai-grid div:nth-child(6) .ai-card-description').innerHTML = this.getTranslation('ai-trend-prediction-desc');
+
+        // Update profit system section
+        document.querySelector('.profit-system .profit-title').innerHTML = this.getTranslation('profit-system-title');
+        document.querySelector('.profit-system p').innerHTML = this.getTranslation('profit-system-subtitle');
+        document.querySelector('.profit-flow div:nth-child(1) h4').innerHTML = this.getTranslation('step1-title');
+        document.querySelector('.profit-flow div:nth-child(1) p').innerHTML = this.getTranslation('step1-desc');
+        document.querySelector('.profit-flow div:nth-child(3) h4').innerHTML = this.getTranslation('step2-title');
+        document.querySelector('.profit-flow div:nth-child(3) p').innerHTML = this.getTranslation('step2-desc');
+        document.querySelector('.profit-flow div:nth-child(5) h4').innerHTML = this.getTranslation('step3-title');
+        document.querySelector('.profit-flow div:nth-child(5) p').innerHTML = this.getTranslation('step3-desc');
+        document.querySelector('.profit-flow div:nth-child(7) h4').innerHTML = this.getTranslation('step4-title');
+        document.querySelector('.profit-flow div:nth-child(7) p').innerHTML = this.getTranslation('step4-desc');
+        document.querySelector('.profit-system div:nth-child(3) h4').innerHTML = this.getTranslation('profit-stats-title');
+        document.querySelector('.profit-system div:nth-child(3) div:nth-child(2) div:nth-child(1) div:nth-child(2)').innerHTML = this.getTranslation('profit-today');
+        document.querySelector('.profit-system div:nth-child(3) div:nth-child(2) div:nth-child(2) div:nth-child(2)').innerHTML = this.getTranslation('tokens-created-stats');
+        document.querySelector('.profit-system div:nth-child(3) div:nth-child(2) div:nth-child(3) div:nth-child(2)').innerHTML = this.getTranslation('success-rate');
+        document.querySelector('.profit-system div:nth-child(3) div:nth-child(2) div:nth-child(4) div:nth-child(2)').innerHTML = this.getTranslation('active-users-stats');
+
+        // Update social proof
+        document.querySelector('.social-proof h2').innerHTML = this.getTranslation('social-proof-title');
+        document.querySelector('.social-proof p').innerHTML = this.getTranslation('social-proof-subtitle');
+        document.querySelector('.stats-grid div:nth-child(1) .stat-label').innerHTML = this.getTranslation('active-users-label');
+        document.querySelector('.stats-grid div:nth-child(2) .stat-label').innerHTML = this.getTranslation('tokens-created-label');
+        document.querySelector('.stats-grid div:nth-child(3) .stat-label').innerHTML = this.getTranslation('total-volume-label');
+        document.querySelector('.stats-grid div:nth-child(4) .stat-label').innerHTML = this.getTranslation('ai-accuracy-label');
+
+        // Update CTA section
+        document.querySelector('.cta-section h2').innerHTML = this.getTranslation('cta-title');
+        document.querySelector('.cta-section p').innerHTML = this.getTranslation('cta-subtitle');
+        document.querySelector('.cta-section a:nth-child(3)').innerHTML = this.getTranslation('cta-create-token');
+        document.querySelector('.cta-section a:nth-child(4)').innerHTML = this.getTranslation('cta-start-trading');
+        document.querySelector('.cta-section a:nth-child(5)').innerHTML = this.getTranslation('cta-view-dashboard');
+
+        // Update footer
+        // Assuming footer is not using data-translate for now, if it does, add it here.
     }
 
-    // Apply directional styles
-    applyDirectionalStyles(language) {
-        const isRTL = this.rtlLanguages.includes(language);
-        const body = document.body;
-        
-        // Remove existing direction classes
-        body.classList.remove('rtl', 'ltr');
-        
-        // Add appropriate direction class
-        body.classList.add(isRTL ? 'rtl' : 'ltr');
-        
-        // Update CSS custom properties for direction-aware styling
-        document.documentElement.style.setProperty('--text-align-start', isRTL ? 'right' : 'left');
-        document.documentElement.style.setProperty('--text-align-end', isRTL ? 'left' : 'right');
-        document.documentElement.style.setProperty('--margin-start', isRTL ? 'margin-right' : 'margin-left');
-        document.documentElement.style.setProperty('--margin-end', isRTL ? 'margin-left' : 'margin-right');
-        document.documentElement.style.setProperty('--padding-start', isRTL ? 'padding-right' : 'padding-left');
-        document.documentElement.style.setProperty('--padding-end', isRTL ? 'padding-left' : 'padding-right');
-    }
-
-    // Get translation for a key
-    getTranslation(key, language = null) {
-        const lang = language || this.currentLanguage;
-        return this.translations[lang] && this.translations[lang][key] || key;
-    }
-
-    // Add translation
-    addTranslation(language, key, value) {
-        if (!this.translations[language]) {
-            this.translations[language] = {};
-        }
-        this.translations[language][key] = value;
-    }
-
-    // Add multiple translations
-    addTranslations(language, translations) {
-        if (!this.translations[language]) {
-            this.translations[language] = {};
-        }
-        Object.assign(this.translations[language], translations);
-    }
-
-    // Get current language
-    getCurrentLanguage() {
-        return this.currentLanguage;
-    }
-
-    // Check if language is RTL
-    isRTL(language = null) {
-        const lang = language || this.currentLanguage;
-        return this.rtlLanguages.includes(lang);
-    }
-
-    // Register callback for language changes
+    // Register a callback function to be called when the language changes
     onLanguageChange(callback) {
         this.callbacks.push(callback);
     }
-
-    // Notify callbacks of language change
-    notifyCallbacks(language) {
-        this.callbacks.forEach(callback => {
-            try {
-                callback(language);
-            } catch (error) {
-                console.error('Language change callback error:', error);
-            }
-        });
-    }
-
-    // Format number based on language
-    formatNumber(number, language = null) {
-        const lang = language || this.currentLanguage;
-        
-        if (lang === 'fa') {
-            // Persian number formatting
-            return new Intl.NumberFormat('fa-IR').format(number);
-        } else {
-            // English number formatting
-            return new Intl.NumberFormat('en-US').format(number);
-        }
-    }
-
-    // Format currency based on language
-    formatCurrency(amount, currency = 'USD', language = null) {
-        const lang = language || this.currentLanguage;
-        
-        try {
-            if (lang === 'fa') {
-                return new Intl.NumberFormat('fa-IR', {
-                    style: 'currency',
-                    currency: currency,
-                    minimumFractionDigits: 2
-                }).format(amount);
-            } else {
-                return new Intl.NumberFormat('en-US', {
-                    style: 'currency',
-                    currency: currency,
-                    minimumFractionDigits: 2
-                }).format(amount);
-            }
-        } catch (error) {
-            // Fallback formatting
-            return `${amount.toFixed(2)} ${currency}`;
-        }
-    }
-
-    // Format date based on language
-    formatDate(date, language = null) {
-        const lang = language || this.currentLanguage;
-        
-        try {
-            if (lang === 'fa') {
-                return new Intl.DateTimeFormat('fa-IR', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                }).format(date);
-            } else {
-                return new Intl.DateTimeFormat('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                }).format(date);
-            }
-        } catch (error) {
-            // Fallback formatting
-            return date.toLocaleDateString();
-        }
-    }
-
-    // Format time based on language
-    formatTime(date, language = null) {
-        const lang = language || this.currentLanguage;
-        
-        try {
-            if (lang === 'fa') {
-                return new Intl.DateTimeFormat('fa-IR', {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit'
-                }).format(date);
-            } else {
-                return new Intl.DateTimeFormat('en-US', {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit'
-                }).format(date);
-            }
-        } catch (error) {
-            // Fallback formatting
-            return date.toLocaleTimeString();
-        }
-    }
-
-    // Get language-specific font family
-    getFontFamily(language = null) {
-        const lang = language || this.currentLanguage;
-        
-        if (lang === 'fa') {
-            return 'Vazir, Tahoma, Arial, sans-serif';
-        } else {
-            return 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
-        }
-    }
-
-    // Update font family based on language
-    updateFontFamily(language = null) {
-        const lang = language || this.currentLanguage;
-        const fontFamily = this.getFontFamily(lang);
-        
-        document.documentElement.style.setProperty('--font-family', fontFamily);
-    }
 }
 
-// Global functions for language switching
-window.switchLanguage = function(language) {
-    if (window.multilingualSystem) {
-        window.multilingualSystem.switchLanguage(language);
-    }
+const multilingual = new MultilingualSystem();
+
+// Expose setLanguage globally for language buttons
+window.setLanguage = (lang) => {
+    multilingual.setLanguage(lang);
+    // Re-apply translations to dynamic content if needed
+    // For example, if you have content loaded after initial page load
+    // you might need to call multilingual.applyTranslations() again.
 };
 
-// Initialize multilingual system when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    window.multilingualSystem = new MultilingualSystem();
-    
-    // Update existing switchLanguage function
-    const originalSwitchLanguage = window.switchLanguage;
-    window.switchLanguage = function(language) {
-        if (window.multilingualSystem) {
-            window.multilingualSystem.switchLanguage(language);
-        } else if (originalSwitchLanguage) {
-            originalSwitchLanguage(language);
-        }
-    };
+// Add event listeners to language buttons (assuming they have IDs like 'lang-fa' and 'lang-en')
+document.addEventListener('DOMContentLoaded', () => {
+    const faButton = document.getElementById('lang-fa');
+    const enButton = document.getElementById('lang-en');
+
+    if (faButton) {
+        faButton.addEventListener('click', () => multilingual.setLanguage('fa'));
+    }
+    if (enButton) {
+        enButton.addEventListener('click', () => multilingual.setLanguage('en'));
+    }
 });
 
-// Export for global use
-if (typeof window !== 'undefined') {
-    window.MultilingualSystem = MultilingualSystem;
-}
-
-// Export for Node.js environments
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = MultilingualSystem;
-}
