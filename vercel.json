@@ -1,6 +1,30 @@
 {
   "version": 2,
+  "builds": [
+    {
+      "src": "pumpx-platform/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist",
+        "installCommand": "npm install --legacy-peer-deps"
+      }
+    },
+    {
+      "src": "pumpx-backend/src/server.js",
+      "use": "@vercel/node"
+    }
+  ],
   "routes": [
-    { "src": "/(.*)", "dest": "/index.html" }
-  ]
+    {
+      "src": "/api/(.*)",
+      "dest": "/pumpx-backend/src/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/pumpx-platform/dist/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
 }

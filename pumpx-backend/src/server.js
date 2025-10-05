@@ -3,8 +3,6 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
-import { createServer } from 'http';
-import { WebSocketServer } from 'ws';
 
 // Load environment variables
 dotenv.config();
@@ -22,7 +20,6 @@ import { errorHandler } from './middleware/errorHandler.js';
 import { rateLimiter } from './middleware/rateLimiter.js';
 
 const app = express();
-const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(helmet());
@@ -42,6 +39,21 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
+app.get('/api', (req, res) => {
+  res.json({ 
+    message: 'PumpX Backend API',
+    version: '1.0.0',
+    endpoints: [
+      '/api/v1/auth',
+      '/api/v1/tokens', 
+      '/api/v1/swap',
+      '/api/v1/ai',
+      '/api/v1/user',
+      '/api/v1/stats'
+    ]
+  });
+});
+
 // API Routes
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/tokens', tokenRoutes);
@@ -50,54 +62,22 @@ app.use('/api/v1/ai', aiRoutes);
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/stats', statsRoutes);
 
-// Error handling
+// Error handling middleware
 app.use(errorHandler);
 
-// Create HTTP server
-const server = createServer(app);
-
-// WebSocket server for real-time updates
-const wss = new WebSocketServer({ server, path: '/ws' });
-
-wss.on('connection', (ws) => {
-  console.log('New WebSocket connection');
-  
-  ws.on('message', (message) => {
-    console.log('Received:', message.toString());
-  });
-  
-  ws.on('close', () => {
-    console.log('WebSocket connection closed');
-  });
-  
-  // Send welcome message
-  ws.send(JSON.stringify({
-    type: 'connected',
-    message: 'Connected to PumpX WebSocket'
-  }));
+// 404 handler
+app.use('*', (req, res) => {
+  res.status(404).json({ error: 'Route not found' });
 });
 
-// Broadcast function for real-time updates
-export function broadcast(data) {
-  wss.clients.forEach((client) => {
-    if (client.readyState === 1) { // OPEN
-      client.send(JSON.stringify(data));
-    }
+// For Vercel serverless function
+export default app;
+
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 3001;
+  app.listen(PORT, () => {
+    console.log(`🚀 PumpX Backend running on port ${PORT}`);
+    console.log(`📊 Health check: http://localhost:${PORT}/health`);
   });
 }
-
-// Start server
-server.listen(PORT, () => {
-  console.log(`🚀 PumpX Backend running on port ${PORT}`);
-  console.log(`📡 WebSocket server running on ws://localhost:${PORT}/ws`);
-  console.log(`🌍 Environment: ${process.env.NODE_ENV}`);
-});
-
-// Graceful shutdown
-process.on('SIGTERM', () => {
-  console.log('SIGTERM received, shutting down gracefully');
-  server.close(() => {
-    console.log('Server closed');
-    process.exit(0);
-  });
-});
